@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AnimalsClassLibrary.Animals.Animal>
+
+@{
+}
+
+<h2>List of Animals</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sound</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td>@Html.Raw(animal.AnimalPrinter.PrintNameHtml(animal.Name))</td>
+                <td>@Html.Raw(animal.AnimalPrinter.PrintSoundHtml(animal.Sound))</td>
+
+                @{
+                    animal.PrintNameСonsole();
+                    animal.MakeSoundConsole();
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Export Data to Folder</h2>
+<p>
+    <a asp-controller="Animal" asp-action="ExportAnimalsToFile">Download Animals File</a>
+</p>

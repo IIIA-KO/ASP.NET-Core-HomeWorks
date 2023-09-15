@@ -1,0 +1,6 @@
+Name: Meower
+Sound: Meow!
+Name: Barker
+Sound: Woof!
+Name: Squawker
+Sound: Squawk!

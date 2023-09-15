@@ -1,0 +1,23 @@
+﻿@page
+@model HomeWork1.Pages.Task2Model
+@{
+    char randomLetter = (char)('A' + Random.Shared.Next(25)); //25 - no z
+}
+
+<h3>Випадкова буква: <span>@randomLetter</span></h3>
+
+<br />
+
+<h3>Список ресторанів:</h3>
+<ul class="restaurant-list">
+    @foreach (var restaurant in Model.Restaurants)
+    {
+        <li class="restaurant-item">
+            <h3>@restaurant.Name</h3>
+            <p>Адреса: @restaurant.Address</p>
+            <p>Телефон: @restaurant.Phone</p>
+            <p>Години роботи: @restaurant.Hours</p>
+            <p>Опис ресторану: @restaurant.Description</p>
+        </li>
+    }
+</ul>

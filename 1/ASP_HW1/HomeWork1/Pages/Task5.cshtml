@@ -1,0 +1,17 @@
+﻿@page
+@model HomeWork1.Pages.Task5Model
+@{
+}
+
+<h3>Список країн:</h3>
+<ul class="country-list">
+    @foreach(var country in Model.Countries)
+    {
+        <li class="country-item">
+            <h3>@country.Name</h3>
+            <p>Столиця: @country.Capital</p>
+            <p>Населення: @country.Population</p>
+            <p>Площа: @country.Area</p>
+        </li>
+    }
+</ul>
