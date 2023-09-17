@@ -16,3 +16,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+ul.file_action-list{
+    list-style-type: none;
+    padding: 0;
+}
+
+li.file_action-item{
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}

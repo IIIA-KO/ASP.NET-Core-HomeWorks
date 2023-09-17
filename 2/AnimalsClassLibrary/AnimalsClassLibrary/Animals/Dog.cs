@@ -2,6 +2,7 @@
 
 namespace AnimalsClassLibrary.Animals
 {
+    [Serializable]
     public class Dog : Animal
     {
         public override string Sound { get => "Woof!"; }

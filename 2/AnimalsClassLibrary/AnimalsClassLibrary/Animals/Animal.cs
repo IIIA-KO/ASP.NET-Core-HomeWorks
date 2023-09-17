@@ -2,6 +2,7 @@
 
 namespace AnimalsClassLibrary.Animals
 {
+    [Serializable]
     public abstract class Animal
     {
         private string _name;

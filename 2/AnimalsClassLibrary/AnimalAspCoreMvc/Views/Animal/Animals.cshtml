@@ -29,7 +29,38 @@
     </tbody>
 </table>
 
-<h2>Export Data to Folder</h2>
-<p>
-    <a asp-controller="Animal" asp-action="ExportAnimalsToFile">Download Animals File</a>
-</p>
+<h2>Save / Download</h2>
+
+<ul class="file_action-list">
+    <li class="file_action-item">
+        <a asp-controller="Animal" asp-action="ExportAnimalsToFile">Download Info About Animals (txt file)</a>
+    </li>
+
+    <li class="file_action-item">
+        <a asp-controller="Animal" asp-action="ExportAnimalsToJson">Download Info About Animals (json file)</a>
+    </li>
+
+    <li class="file_action-item">
+        <form method="post" action="@Url.Action("ImportAnimalsFromJson", "Animal")" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Select JSON File:</label>
+                <input type="file" name="file" id="file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Import Animals</button>
+        </form>
+    </li>
+
+    <li class="file_action-item">
+        <a asp-controller="Animal" asp-action="ExportAnimalsToBinary">Download Info About Animals (binary file)</a>
+    </li>
+
+    <li class="file_action-item">
+        <form method="post" action="@Url.Action("ImportAnimalsFromBinary", "Animal")" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Select binary File:</label>
+                <input type="file" name="file" id="file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Import Animals</button>
+        </form>
+    </li>
+</ul>

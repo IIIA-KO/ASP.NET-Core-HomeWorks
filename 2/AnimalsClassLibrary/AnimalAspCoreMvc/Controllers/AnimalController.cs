@@ -8,16 +8,14 @@ namespace AnimalAspCoreMvc.Controllers
     public class AnimalController : Controller
     {
         private readonly IAnimalService _animalService;
-        private readonly IAnimalPrinter _animalPrinter;
+
+        private const string _txtFilePath = "wwwroot/files/animals.txt";
+        private const string _jsonFilePath = "wwwroot/files/animals.json";
+        private const string _binFilePath = "wwwroot/files/animals.bin";
 
         public AnimalController(IAnimalService service, IAnimalPrinter animalPrinter)
         {
             this._animalService = service;
-            this._animalPrinter = animalPrinter;
-
-            this._animalService.AddAnimal(new Cat("Meower", this._animalPrinter));
-            this._animalService.AddAnimal(new Dog("Barker", this._animalPrinter));
-            this._animalService.AddAnimal(new Parrot("Squawker", this._animalPrinter));
         }
 
         public IActionResult Animals()
@@ -27,11 +25,9 @@ namespace AnimalAspCoreMvc.Controllers
 
         public IActionResult ExportAnimalsToFile()
         {
-            var filePath = "wwwroot/files/animals.txt";
-
             try
             {
-                using (var writer = new StreamWriter(filePath, false))
+                using (var writer = new StreamWriter(_txtFilePath, false))
                 {
                     foreach (Animal animal in this._animalService.GetAnimals())
                     {
@@ -48,8 +44,85 @@ namespace AnimalAspCoreMvc.Controllers
             var fileName = "animals.txt";
             var mimeType = "text/plain";
 
-            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+            var fileBytes = System.IO.File.ReadAllBytes(_txtFilePath);
             return File(fileBytes, mimeType, fileName);
+        }
+
+        public IActionResult ExportAnimalsToJson()
+        {
+            try
+            {
+                this._animalService.SaveAnimalsToJson(_jsonFilePath);
+
+                var fileName = "animals.json";
+                var mimeType = "application/json";
+
+                var fileBytes = System.IO.File.ReadAllBytes(_jsonFilePath);
+
+                return File(fileBytes, mimeType, fileName);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Failed to export list of Animals to JSON file: {ex.Message}");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult ImportAnimalsFromJson(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("File is empty or missing.");
+            }
+
+            try
+            {
+                this._animalService.LoadAnimalsFromJson(file);
+                return RedirectToAction("Animals");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Failed to import list of Animals from JSON file: {ex.Message}");
+            }
+        }
+
+
+        public IActionResult ExportAnimalsToBinary()
+        {
+            try
+            {
+                this._animalService.SaveAnimalsToBinary(_binFilePath);
+
+                var fileName = "animals.bin";
+                var mimeType = "application/bin";
+
+                var fileBytes = System.IO.File.ReadAllBytes(_binFilePath);
+
+                return File(fileBytes, mimeType, fileName);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Failed to export list of Animals to binary file: {ex.Message}");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult ImportAnimalsFromBinary(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("File is empty or missing.");
+            }
+
+            try
+            {
+                this._animalService.LoadAnimalsFromBinary(file);
+                return RedirectToAction("Animals");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Failed to import list of Animals from binary file: {ex.Message}");
+            }
         }
     }
 }
