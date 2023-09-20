@@ -8,11 +8,14 @@ namespace AnimalAspCoreMvc.Services
 
         public void AddAnimal(Animal animal);
 
+        public void SaveAnimalsInfoToTxt(string filePath);
+
         public void SaveAnimalsToJson(string filePath);
+
         public void LoadAnimalsFromJson(IFormFile file);
 
-
         public void SaveAnimalsToBinary(string filePath);
+
         public void LoadAnimalsFromBinary(IFormFile file);
     }
 }

@@ -1,12 +1,12 @@
-﻿using AnimalsClassLibrary.Animals;
+﻿using Newtonsoft.Json;
+using AnimalsClassLibrary.Animals;
 using AnimalsClassLibrary.Printers;
-using Newtonsoft.Json;
 
 namespace AnimalAspCoreMvc.Services
 {
     public class AnimalService : IAnimalService
     {
-        private List<Animal> _animals { get; set; }
+        private ICollection<Animal> _animals { get; set; }
         private IAnimalPrinter _printer;
 
         public AnimalService(IAnimalPrinter printer)
@@ -26,20 +26,29 @@ namespace AnimalAspCoreMvc.Services
         }
 
         #region Saving/Loading
-        public void SaveAnimalsToJson(string path)
+        public void SaveAnimalsInfoToTxt(string filePath)
         {
-            if (string.IsNullOrEmpty(path))
+            foreach(Animal animal in this._animals)
             {
-                throw new ArgumentNullException(nameof(path), "Filepath cannot be null or empty");
+                animal.PrintNameFile(filePath);
+                animal.MakeSoundFile(filePath);
+            }
+        }
+
+        public void SaveAnimalsToJson(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                throw new ArgumentNullException(nameof(filePath), "Filepath cannot be null or empty");
             }
 
-            if (!File.Exists(path))
+            if (!File.Exists(filePath))
             {
-                File.Create(path).Close();
+                File.Create(filePath).Close();
             }
 
             var json = JsonConvert.SerializeObject(this._animals);
-            File.WriteAllText(path, json);
+            File.WriteAllText(filePath, json);
         }
 
         public void LoadAnimalsFromJson(IFormFile file)
@@ -48,7 +57,6 @@ namespace AnimalAspCoreMvc.Services
             {
                 throw new ArgumentException("Invalid file.");
             }
-
 
             using (StreamReader reader = new StreamReader(file.OpenReadStream()))
             {

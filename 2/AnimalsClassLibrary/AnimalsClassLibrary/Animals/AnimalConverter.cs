@@ -1,13 +1,12 @@
-﻿using AnimalsClassLibrary.Printers;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
+using AnimalsClassLibrary.Printers;
 
 namespace AnimalsClassLibrary.Animals
 {
     public class AnimalConverter : JsonConverter<Animal>
     {
-        private IAnimalPrinter _printer;
+        private readonly IAnimalPrinter _printer;
 
         public AnimalConverter(IAnimalPrinter printer)
         {
@@ -25,15 +24,15 @@ namespace AnimalsClassLibrary.Animals
 
                 if (sound.Equals("Meow!", StringComparison.OrdinalIgnoreCase))
                 {
-                    animal = new Cat(jsonObject["Name"].Value<string>(), new AnimalPrinter());
+                    animal = new Cat(jsonObject["Name"].Value<string>(), this._printer);
                 }
                 else if (sound.Equals("Woof!", StringComparison.OrdinalIgnoreCase))
                 {
-                    animal = new Dog(jsonObject["Name"].Value<string>(), new AnimalPrinter());
+                    animal = new Dog(jsonObject["Name"].Value<string>(), this._printer);
                 }
                 else if (sound.Equals("Squawk!", StringComparison.OrdinalIgnoreCase))
                 {
-                    animal = new Parrot(jsonObject["Name"].Value<string>(), new AnimalPrinter());
+                    animal = new Parrot(jsonObject["Name"].Value<string>(), this._printer);
                 }
                 else
                 {

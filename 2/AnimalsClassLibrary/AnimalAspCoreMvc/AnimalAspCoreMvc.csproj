@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AnimalsClassLibrary\AnimalsClassLibrary.csproj" />
+    <ProjectReference Include="..\ShapesClassLibrary\ShapesClassLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

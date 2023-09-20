@@ -1,16 +1,15 @@
-﻿namespace AnimalsClassLibrary.Printers
+﻿namespace ShapesClassLibrary.Printers
 {
-    public class AnimalPrinter : IAnimalPrinter
+    public class ShapePrinter : IShapePrinter
     {
         #region Console
         public void PrintNameConsole(string name)
         {
-            Console.WriteLine($"Name: {name}");
+            Console.WriteLine(name);
         }
-
-        public void PrintSoundConsole(string sound)
+        public void PrintShapeConsole(string outputMessage)
         {
-            Console.WriteLine($"Sound: {sound}");
+            Console.WriteLine(outputMessage);
         }
         #endregion
 
@@ -34,10 +33,9 @@
         {
             this.PrintStringToFile(path, $"Name: {name}\n");
         }
-
-        public void PrintSoundFile(string path, string sound)
+        public void PrintShapeFile(string path, string outputMessage)
         {
-            this.PrintStringToFile(path, $"Sound: {sound}\n");
+            this.PrintStringToFile(path, $"Shape: {outputMessage}\n");
         }
         #endregion
 
@@ -47,9 +45,9 @@
             return $"<p>{name}</p>";
         }
 
-        public string PrintSoundHtml(string sound)
+        public string PrintShapeHtml(string outputMessage)
         {
-            return $"<p>{sound}</p>";
+            return $"<p>{outputMessage}</p>";
         }
         #endregion
     }

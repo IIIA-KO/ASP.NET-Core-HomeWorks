@@ -1,6 +1,0 @@
-Name: JsonMeower
-Sound: Meow!
-Name: JsonBarker
-Sound: Woof!
-Name: JsonSquawker
-Sound: Squawk!

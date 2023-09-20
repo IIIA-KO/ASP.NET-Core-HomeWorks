@@ -1,5 +1,4 @@
 ﻿using AnimalAspCoreMvc.Services;
-using AnimalsClassLibrary.Animals;
 using AnimalsClassLibrary.Printers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +12,7 @@ namespace AnimalAspCoreMvc.Controllers
         private const string _jsonFilePath = "wwwroot/files/animals.json";
         private const string _binFilePath = "wwwroot/files/animals.bin";
 
-        public AnimalController(IAnimalService service, IAnimalPrinter animalPrinter)
+        public AnimalController(IAnimalService service)
         {
             this._animalService = service;
         }
@@ -27,14 +26,16 @@ namespace AnimalAspCoreMvc.Controllers
         {
             try
             {
-                using (var writer = new StreamWriter(_txtFilePath, false))
+                if (!System.IO.File.Exists(_txtFilePath))
                 {
-                    foreach (Animal animal in this._animalService.GetAnimals())
-                    {
-                        writer.WriteLine($"Name: {animal.Name}");
-                        writer.WriteLine($"Sound: {animal.Sound}");
-                    }
+                    System.IO.File.Create(_txtFilePath).Close();
                 }
+                else
+                {
+                    System.IO.File.WriteAllText(_txtFilePath, string.Empty);
+                }
+
+                this._animalService.SaveAnimalsInfoToTxt(_txtFilePath);
             }
             catch (Exception ex)
             {
@@ -52,6 +53,15 @@ namespace AnimalAspCoreMvc.Controllers
         {
             try
             {
+                if (!System.IO.File.Exists(_txtFilePath))
+                {
+                    System.IO.File.Create(_txtFilePath).Close();
+                }
+                else
+                {
+                    System.IO.File.WriteAllText(_txtFilePath, string.Empty);
+                }
+
                 this._animalService.SaveAnimalsToJson(_jsonFilePath);
 
                 var fileName = "animals.json";
@@ -86,11 +96,19 @@ namespace AnimalAspCoreMvc.Controllers
             }
         }
 
-
         public IActionResult ExportAnimalsToBinary()
         {
             try
             {
+                if (!System.IO.File.Exists(_txtFilePath))
+                {
+                    System.IO.File.Create(_txtFilePath).Close();
+                }
+                else
+                {
+                    System.IO.File.WriteAllText(_txtFilePath, string.Empty);
+                }
+
                 this._animalService.SaveAnimalsToBinary(_binFilePath);
 
                 var fileName = "animals.bin";

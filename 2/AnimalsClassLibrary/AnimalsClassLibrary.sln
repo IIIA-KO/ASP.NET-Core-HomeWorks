@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalsClassLibrary", "AnimalsClassLibrary\AnimalsClassLibrary.csproj", "{10071A05-5063-42FD-89B4-7746AE3EE34B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalAspCoreMvc", "AnimalAspCoreMvc\AnimalAspCoreMvc.csproj", "{52807EB4-B33F-4DE5-9EC8-66817C61152B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalAspCoreMvc", "AnimalAspCoreMvc\AnimalAspCoreMvc.csproj", "{52807EB4-B33F-4DE5-9EC8-66817C61152B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesClassLibrary", "ShapesClassLibrary\ShapesClassLibrary.csproj", "{95130158-B121-4BB1-868E-7B10BFC55F02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{52807EB4-B33F-4DE5-9EC8-66817C61152B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52807EB4-B33F-4DE5-9EC8-66817C61152B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52807EB4-B33F-4DE5-9EC8-66817C61152B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95130158-B121-4BB1-868E-7B10BFC55F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95130158-B121-4BB1-868E-7B10BFC55F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95130158-B121-4BB1-868E-7B10BFC55F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95130158-B121-4BB1-868E-7B10BFC55F02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 using AnimalAspCoreMvc.Services;
 using AnimalsClassLibrary.Printers;
+using ShapesClassLibrary.Printers;
 
 namespace AnimalAspCoreMvc
 {
@@ -9,12 +10,13 @@ namespace AnimalAspCoreMvc
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             // Custom services
             builder.Services.AddSingleton<IAnimalPrinter, AnimalPrinter>();
             builder.Services.AddSingleton<IAnimalService, AnimalService>();
+            builder.Services.AddSingleton<IShapePrinter, ShapePrinter>();
+            builder.Services.AddSingleton<IShapeService, ShapeService>();
 
             var app = builder.Build();
 

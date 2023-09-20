@@ -35,19 +35,29 @@ namespace AnimalsClassLibrary.Animals
             AnimalPrinter.PrintNameConsole(Name);
         }
 
-        public void PrintNameFile(string path)
-        {
-            AnimalPrinter.PrintNameFile(path, Name);
-        }
-
         public void MakeSoundConsole()
         {
             AnimalPrinter.PrintSoundConsole(Sound);
         }
 
+        public void PrintNameFile(string path)
+        {
+            AnimalPrinter.PrintNameFile(path, Name);
+        }
+
         public void MakeSoundFile(string path)
         {
             AnimalPrinter.PrintSoundFile(path, Sound);
+        }
+
+        public string PrintNameHtml()
+        {
+            return AnimalPrinter.PrintNameHtml(Name);
+        }
+
+        public string MakeSoundHtml()
+        {
+            return AnimalPrinter.PrintSoundHtml(Sound);
         }
     }
 }
