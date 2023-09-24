@@ -40,7 +40,7 @@ namespace ShapesClassLibrary.Shapes
 
         public override string OutputMessage { get => $"A rectangle with height {Height} and width {Width}"; }
 
-        public Rectangle(IShapePrinter printer, double height, double width) : base(printer)
+        public Rectangle(double height, double width, IShapePrinter printer) : base(printer)
         {
             Height = height;
             Width = width;

@@ -56,7 +56,7 @@ namespace ShapesClassLibrary.Shapes
 
         public override string OutputMessage { get => $"A triangle with sides {Side1}, {Side2}, {Side3}"; }
 
-        public Triangle(IShapePrinter printer, double side1, double side2, double side3) : base(printer)
+        public Triangle(double side1, double side2, double side3, IShapePrinter printer) : base(printer)
         {
             if (!IsValidTriangle(side1, side2, side3) || side1 <= 0 || side2 <= 0 || side3 <= 0)
             {

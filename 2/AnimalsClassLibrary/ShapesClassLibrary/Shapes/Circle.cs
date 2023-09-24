@@ -24,7 +24,7 @@ namespace ShapesClassLibrary.Shapes
 
         public override string OutputMessage { get => $"A circle with radius: {this._radius}"; }
 
-        public Circle(IShapePrinter printer, double radius) : base(printer)
+        public Circle(double radius, IShapePrinter printer) : base(printer)
         {
             Radius = radius;
         }

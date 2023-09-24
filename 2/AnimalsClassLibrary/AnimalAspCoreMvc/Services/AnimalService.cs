@@ -72,9 +72,9 @@ namespace AnimalAspCoreMvc.Services
             }
         }
 
-        public void SaveAnimalsToBinary(string path)
+        public void SaveAnimalsToBinary(string filePath)
         {
-            using (FileStream fs = new FileStream(path, FileMode.Create))
+            using (FileStream fs = new FileStream(filePath, FileMode.Create))
             using (BinaryWriter writer = new BinaryWriter(fs))
             {
                 writer.Write(this._animals.Count);
