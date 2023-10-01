@@ -19,12 +19,12 @@
 
         public void PrintShortInfoToFile(string path, in string shortInfo)
         {
-            this.PrintStringToFile(path, shortInfo);
+            this.PrintStringToFile(path, shortInfo + "\n");
         }
 
         public void PrintFullInfoToFile(string path, in string fullInfo)
         {
-            this.PrintStringToFile(path, fullInfo);
+            this.PrintStringToFile(path, fullInfo + "\n");
         }
 
         public string PrintShortInfoToHtml(in string shortInfo)

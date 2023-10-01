@@ -26,5 +26,32 @@ namespace AspNetCoreMvcApp.Controllers
         {
             return View(this._cocktailService.GetCocktails());
         }
+
+        public IActionResult ExportDataToTxtFile()
+        {
+            try
+            {
+                if (!System.IO.File.Exists(_txtFilePath))
+                {
+                    System.IO.File.Create(_txtFilePath).Close();
+                }
+                else
+                {
+                    System.IO.File.WriteAllText(_txtFilePath, string.Empty);
+                }
+
+                this._cocktailService.SaveCocktailsInfoToTxt(_txtFilePath);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Failed to create file: {ex.Message}");
+            }
+
+            var fileName = "cocktails.txt";
+            var mimeType = "text/plain";
+
+            var fileBytes = System.IO.File.ReadAllBytes(_txtFilePath);
+            return File(fileBytes, mimeType, fileName);
+        }
     }
 }

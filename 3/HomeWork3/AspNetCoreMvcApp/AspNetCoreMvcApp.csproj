@@ -15,4 +15,8 @@
     <ProjectReference Include="..\CocktailClassLibrary\CocktailClassLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
 </Project>
