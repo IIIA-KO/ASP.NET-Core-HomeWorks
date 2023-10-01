@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CocktailClassLibrary.Cocktails.Cocktail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            @* <th>
+            @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.AlcoholPercentage)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.ShortInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullInfo)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.Raw(item.ShortInfo)</td>
+                <td>@Html.Raw(item.FullInfo)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="ExportDataToTxtFile">Download info about cocktails (txt file)</a>
