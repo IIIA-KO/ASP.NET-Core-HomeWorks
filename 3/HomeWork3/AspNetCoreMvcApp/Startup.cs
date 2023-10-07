@@ -2,6 +2,7 @@
 using AspNetCoreMvcApp.Services.Interfaces;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using CharactersClassLibrary.Printers;
 using CocktailClassLibrary.Printers;
 
 namespace AspNetCoreMvcApp
@@ -25,6 +26,8 @@ namespace AspNetCoreMvcApp
         {
             builder.RegisterType<CocktailPrinter>().As<ICocktailPrinter>();
             builder.RegisterType<CocktailService>().As<ICocktailService>();
+            builder.RegisterType<CharacterPrinter>().As<ICharacterPrinter>();
+            builder.RegisterType<CharacterService>().As<ICharacterService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

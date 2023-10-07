@@ -1,0 +1,6 @@
+Name: Bob | Type: Infantry
+Character type: Infantry | Health 100hp | Attack damage: 50 | Attach Defense 30
+Name: John | Type: Spearman
+Character type: Spearman | Health 80hp | Attack damage: 60 | Attach Defense 20
+Name: Max | Type: Archer
+Character type: Archer | Health 60hp | Attack damage: 40 | Attach Defense 10

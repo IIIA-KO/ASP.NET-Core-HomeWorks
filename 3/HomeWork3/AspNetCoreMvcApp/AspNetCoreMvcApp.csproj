@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CharactersClassLibrary\CharactersClassLibrary.csproj" />
     <ProjectReference Include="..\CocktailClassLibrary\CocktailClassLibrary.csproj" />
   </ItemGroup>
 
