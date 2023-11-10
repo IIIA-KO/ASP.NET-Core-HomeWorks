@@ -65,5 +65,91 @@ namespace MovieService
         {
             this._movies.RemoveAll(m => m.Id == id);
         }
+
+        public void Repopulate()
+        {
+            this._movies.Clear();
+
+            this._movies.Add(new Movie
+            {
+                Id = new Guid(),
+                Title = "Title1",
+                Director = "Director1",
+                Style = "Style1",
+                Showtimes = new List<Showtime>
+                {
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now,
+                        TicketPrice = 100
+                    },
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now.AddDays(1),
+                        TicketPrice = 120
+                    },
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now.AddDays(2),
+                        TicketPrice = 90
+                    }
+                },
+                ShortDescription = "Short description 1"
+            });
+
+            this._movies.Add(new Movie
+            {
+                Id = new Guid(),
+                Title = "Title2",
+                Director = "Director2",
+                Style = "Style2",
+                Showtimes = new List<Showtime>
+                {
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now,
+                        TicketPrice = 100
+                    },
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now.AddDays(1),
+                        TicketPrice = 120
+                    },
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now.AddDays(2),
+                        TicketPrice = 90
+                    }
+                },
+                ShortDescription = "Short description 2"
+            });
+
+            this._movies.Add(new Movie
+            {
+                Id = new Guid(),
+                Title = "Title3",
+                Director = "Director3",
+                Style = "Style3",
+                Showtimes = new List<Showtime>
+                {
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now,
+                        TicketPrice = 100
+                    },
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now.AddDays(1),
+                        TicketPrice = 120
+                    },
+                    new Showtime
+                    {
+                        StartTime = DateTime.Now.AddDays(2),
+                        TicketPrice = 90
+                    }
+                },
+                ShortDescription = "Short description 3"
+            });
+        }
     }
 }

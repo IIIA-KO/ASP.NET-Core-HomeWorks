@@ -4,5 +4,6 @@ namespace MovieService
 {
     public interface IMovieRepository : IRepository<Movie>
     {
+        void Repopulate();
     }
 }
