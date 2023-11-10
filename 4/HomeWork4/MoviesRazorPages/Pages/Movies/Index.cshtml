@@ -1,0 +1,63 @@
+﻿@page
+@model MoviesRazorPages.Pages.Movies.IndexModel
+@{
+}
+
+
+<div class="container">
+    <h1>Index Movies</h1>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+
+                    <th>
+                        Director
+                    </th>
+
+                    <th>
+                        Style
+                    </th>
+
+                    <th>
+                        ShortDescription
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model.Movies)
+                {
+                    <tr>
+                        <td>
+                            @item.Title
+                        </td>
+
+                        <td>
+                            @item.Director
+                        </td>
+
+                        <td>
+                            @item.Style
+                        </td>
+
+                        <td>
+                            @item.ShortDescription
+                        </td>
+
+                        <td>
+                            <a class="col-lg btn btn-secondary" asp-page="./Details" asp-route-id="@item.Id" title="Details">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

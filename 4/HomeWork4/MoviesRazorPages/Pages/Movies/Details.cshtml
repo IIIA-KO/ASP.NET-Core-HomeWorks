@@ -1,0 +1,72 @@
+﻿@page
+@model MoviesRazorPages.Pages.Movies.DetailsModel
+
+<div class="container">
+    <h1>Details</h1>
+
+    <div>
+        <h4>Movie</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                <span title="Name">@Html.DisplayNameFor(model => model.Movie.Title)</span>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Title)
+            </dd>
+
+            <dt class="col-sm-2">
+                <span title="Name">@Html.DisplayNameFor(model => model.Movie.Director)</span>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Director)
+            </dd>
+
+            <dt class="col-sm-2">
+                <span title="Name">@Html.DisplayNameFor(model => model.Movie.Style)</span>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Style)
+            </dd>
+
+            <dt class="col-sm-2">
+                <span title="Name">@Html.DisplayNameFor(model => model.Movie.ShortDescription)</span>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.ShortDescription)
+            </dd>
+        </dl>
+    </div>
+
+    <hr />
+    <h2>Showtimes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <span title="Name">@Html.DisplayNameFor(model => model.Showtimes[0].StartTime)</span>
+                </th>
+                <th>
+                    <span title="Personal Data">@Html.DisplayNameFor(model => model.Showtimes[0].TicketPrice)</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Showtimes)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketPrice)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <a asp-page="/Movies/Index" class="btn btn-secondary" data-toggle="tooltip" title="Back to List">Back to List</a>
+    </div>
+</div>
