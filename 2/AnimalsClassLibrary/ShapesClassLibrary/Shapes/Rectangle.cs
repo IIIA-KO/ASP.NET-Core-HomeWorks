@@ -45,10 +45,5 @@ namespace ShapesClassLibrary.Shapes
             Height = height;
             Width = width;
         }
-
-        public override string PrintShapeHtml()
-        {
-            return $"<div style=\"height: {Height}px; width: {Width}px; background-color: #555;\"></div>";
-        }
     }
 }

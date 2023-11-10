@@ -4,6 +4,8 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using CharactersClassLibrary.Printers;
 using CocktailClassLibrary.Printers;
+using GadgetsClassLibrary.Printers;
+using ShapesClassLibrary.Printers;
 
 namespace AspNetCoreMvcApp
 {
@@ -26,8 +28,15 @@ namespace AspNetCoreMvcApp
         {
             builder.RegisterType<CocktailPrinter>().As<ICocktailPrinter>();
             builder.RegisterType<CocktailService>().As<ICocktailService>();
+            
             builder.RegisterType<CharacterPrinter>().As<ICharacterPrinter>();
             builder.RegisterType<CharacterService>().As<ICharacterService>();
+            
+            builder.RegisterType<ShapePrinter>().As<IShapePrinter>();
+            builder.RegisterType<ShapeService>().As<IShapeService>();
+
+            builder.RegisterType<GadgetPrinter>().As<IGadgetPrinter>();
+            builder.RegisterType<GadgetService>().As<IGadgetService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

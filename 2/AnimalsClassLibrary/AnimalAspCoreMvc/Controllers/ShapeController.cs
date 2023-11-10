@@ -1,5 +1,7 @@
 ﻿using AnimalAspCoreMvc.Services;
 using Microsoft.AspNetCore.Mvc;
+using ShapesClassLibrary.Printers;
+using ShapesClassLibrary.Shapes;
 
 namespace AnimalAspCoreMvc.Controllers
 {
@@ -16,10 +18,10 @@ namespace AnimalAspCoreMvc.Controllers
             this._shapeService = shapeService;
 
             //For test:
-            //IShapePrinter printer = new ShapePrinter();
-            //this._shapeService.AddShape(new Circle(100, printer));
-            //this._shapeService.AddShape(new Rectangle(100, 200, printer));
-            //this._shapeService.AddShape(new Triangle(33, 44, 55, printer));
+            IShapePrinter printer = new ShapePrinter();
+            this._shapeService.AddShape(new Circle(100, printer));
+            this._shapeService.AddShape(new Rectangle(100, 200, printer));
+            this._shapeService.AddShape(new Triangle(33, 44, 55, printer));
         }
 
         public IActionResult Index()

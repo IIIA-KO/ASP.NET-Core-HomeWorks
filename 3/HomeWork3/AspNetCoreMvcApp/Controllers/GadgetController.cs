@@ -1,30 +1,30 @@
 ﻿using AspNetCoreMvcApp.Services.Interfaces;
-using CharactersClassLibrary.Characters;
-using CharactersClassLibrary.Printers;
+using GadgetsClassLibrary.Gadgets;
+using GadgetsClassLibrary.Printers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreMvcApp.Controllers
 {
-    public class CharacterController : Controller
+    public class GadgetController : Controller
     {
-        private readonly ICharacterService _characterService;
+        private readonly IGadgetService _gadgetService;
 
-        private const string _txtFilePath = "wwwroot/files/characters.txt";
+        private const string _txtFilePath = "wwwroot/files/gadgets.txt";
 
-        public CharacterController(ICharacterService characterService)
+        public GadgetController(IGadgetService gadgetService)
         {
-            this._characterService = characterService;
+            this._gadgetService = gadgetService;
 
-            //For test:
-            ICharacterPrinter printer = new CharacterPrinter();
-            this._characterService.AddCharacter(new Infantry(printer, "Bob"));
-            this._characterService.AddCharacter(new Spearman(printer, "John"));
-            this._characterService.AddCharacter(new Archer(printer, "Max"));
+            // For test:
+            IGadgetPrinter gadgetPrinter = new GadgetPrinter();
+            this._gadgetService.AddGadget(new CoffeeMachine(gadgetPrinter));
+            this._gadgetService.AddGadget(new Heater(gadgetPrinter));
+            this._gadgetService.AddGadget(new Keyboard(gadgetPrinter));
         }
 
         public IActionResult Index()
         {
-            return View(this._characterService.GetCharacters());
+            return View(this._gadgetService.GetGadgets());
         }
 
         public IActionResult ExportDataToTxtFile()
@@ -40,14 +40,14 @@ namespace AspNetCoreMvcApp.Controllers
                     System.IO.File.WriteAllText(_txtFilePath, string.Empty);
                 }
 
-                this._characterService.SaveCharactersInfoToTxt(_txtFilePath);
+                this._gadgetService.SaveGadgetsInfoToTxt(_txtFilePath);
             }
             catch (Exception ex)
             {
                 return BadRequest($"Failed to create file: {ex.Message}");
             }
 
-            var fileName = "characters.txt";
+            var fileName = "gadgets.txt";
             var mimeType = "text/plain";
 
             var fileBytes = System.IO.File.ReadAllBytes(_txtFilePath);

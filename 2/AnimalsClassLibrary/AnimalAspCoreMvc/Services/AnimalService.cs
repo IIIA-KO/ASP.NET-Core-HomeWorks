@@ -114,7 +114,6 @@ namespace AnimalAspCoreMvc.Services
 
                         if (typeName == typeof(Cat).FullName)
                         {
-
                             this._animals.Add(new Cat(name, this._printer));
                         }
                         else if (typeName == typeof(Dog).FullName)

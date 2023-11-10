@@ -1,5 +1,4 @@
 ﻿using CharactersClassLibrary.Printers;
-using System.Xml.Linq;
 
 namespace CharactersClassLibrary.Characters
 {

@@ -1,0 +1,6 @@
+Name: Coffee Machine
+Name: Coffee Machine | Description: A small electrical machine that makes coffee
+Name: Heater
+Name: Heater | Description: A device that imparts heat or holds something to be heated
+Name: Keyboard
+Name: Keyboard | Description: A group of systematically arranged keys by which a machine or device is operated

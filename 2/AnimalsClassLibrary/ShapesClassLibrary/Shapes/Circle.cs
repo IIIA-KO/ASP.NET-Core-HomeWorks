@@ -28,10 +28,5 @@ namespace ShapesClassLibrary.Shapes
         {
             Radius = radius;
         }
-
-        public override string PrintShapeHtml()
-        {
-            return $"<div style=\"height: {Radius}px; width: {Radius}px; background-color: #555; border-radius: 50%;\"></div>";
-        }
     }
 }

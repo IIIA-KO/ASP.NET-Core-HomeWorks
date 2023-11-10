@@ -12,8 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\2\AnimalsClassLibrary\ShapesClassLibrary\ShapesClassLibrary.csproj" />
     <ProjectReference Include="..\CharactersClassLibrary\CharactersClassLibrary.csproj" />
     <ProjectReference Include="..\CocktailClassLibrary\CocktailClassLibrary.csproj" />
+    <ProjectReference Include="..\GadgetsClassLibrary\GadgetsClassLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

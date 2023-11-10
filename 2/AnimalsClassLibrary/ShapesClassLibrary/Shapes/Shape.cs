@@ -1,4 +1,5 @@
 ﻿using ShapesClassLibrary.Printers;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ShapesClassLibrary.Shapes
 {
@@ -6,6 +7,10 @@ namespace ShapesClassLibrary.Shapes
     {
         public abstract string Name { get; }
         public abstract string OutputMessage { get; }
+
+        public virtual string ShortInfo => $"Name: {Name}";
+        public virtual string FullInfo => $"Name: {Name} | Output message: {OutputMessage}";
+
         public IShapePrinter ShapePrinter { get; protected set; }
 
         public Shape(IShapePrinter shapePrinter)
@@ -13,34 +18,24 @@ namespace ShapesClassLibrary.Shapes
             ShapePrinter = shapePrinter;
         }
 
-        public void PrintNameConsole()
+        public void PrintShortInfoToFile(string path)
         {
-            ShapePrinter.PrintNameConsole(Name);
+            if (ShapePrinter == null)
+            {
+                throw new NullReferenceException($"Unable to print short info about {this.Name} character since the Character Printer reference is null.");
+            }
+
+            ShapePrinter.PrintShortInfoToFile(path, ShortInfo);
         }
 
-        public void PrintShapeConsole()
+        public void PrintFullInfoToFile(string path)
         {
-            ShapePrinter.PrintShapeConsole(OutputMessage);
-        }
+            if (ShapePrinter == null)
+            {
+                throw new NullReferenceException($"Unable to print short info about {this.Name} character since the Character Printer reference is null.");
+            }
 
-        public void PrintNameFile(string path)
-        {
-            ShapePrinter.PrintNameFile(path, Name);
-        }
-
-        public void PrintShapeFile(string path)
-        {
-            ShapePrinter.PrintShapeFile(path, OutputMessage);
-        }
-
-        public string PrintNameHtml()
-        {
-            return ShapePrinter.PrintNameHtml(Name);
-        }
-
-        public virtual string PrintShapeHtml()
-        {
-            return ShapePrinter.PrintShapeHtml(OutputMessage);
+            ShapePrinter.PrintFullInfoToFile(path, FullInfo);
         }
     }
 }

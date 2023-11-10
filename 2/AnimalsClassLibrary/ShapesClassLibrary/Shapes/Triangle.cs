@@ -72,10 +72,5 @@ namespace ShapesClassLibrary.Shapes
         {
             return side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1;
         }
-
-        public override string PrintShapeHtml()
-        {
-            return $"<div style=\"width: 0; height: 0; border-left: {Side1}px solid transparent; border-right: {Side2}px solid transparent; border-bottom: {Side3}px solid #555;\"></div>";
-        }
     }
 }

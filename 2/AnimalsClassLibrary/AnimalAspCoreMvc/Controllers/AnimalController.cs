@@ -1,4 +1,5 @@
 ﻿using AnimalAspCoreMvc.Services;
+using AnimalsClassLibrary.Animals;
 using AnimalsClassLibrary.Printers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,13 @@ namespace AnimalAspCoreMvc.Controllers
         public AnimalController(IAnimalService service)
         {
             this._animalService = service;
+
+            // For test:
+            IAnimalPrinter animalPrinter = new AnimalPrinter();
+
+            this._animalService.AddAnimal(new Cat("Meower", animalPrinter));
+            this._animalService.AddAnimal(new Dog("Barker", animalPrinter));
+            this._animalService.AddAnimal(new Parrot("Squeweker", animalPrinter));
         }
 
         public IActionResult Animals()

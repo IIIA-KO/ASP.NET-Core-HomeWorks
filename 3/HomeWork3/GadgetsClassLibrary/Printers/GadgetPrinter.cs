@@ -1,6 +1,6 @@
-﻿namespace ShapesClassLibrary.Printers
+﻿namespace GadgetsClassLibrary.Printers
 {
-    public class ShapePrinter : IShapePrinter
+    public class GadgetPrinter : IGadgetPrinter
     {
         private void PrintStringToFile(string path, in string str)
         {

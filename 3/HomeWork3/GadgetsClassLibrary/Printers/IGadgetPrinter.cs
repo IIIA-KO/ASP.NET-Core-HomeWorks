@@ -1,6 +1,6 @@
-﻿namespace ShapesClassLibrary.Printers
+﻿namespace GadgetsClassLibrary.Printers
 {
-    public interface IShapePrinter
+    public interface IGadgetPrinter
     {
         void PrintShortInfoToFile(string path, in string shortInfo);
         void PrintFullInfoToFile(string path, in string fullInfo);

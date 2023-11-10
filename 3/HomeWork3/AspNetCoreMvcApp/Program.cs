@@ -1,11 +1,4 @@
-using AspNetCoreMvcApp.Services.Implementations;
-using AspNetCoreMvcApp.Services.Interfaces;
-using Autofac;
-using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
-using CocktailClassLibrary.Printers;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Hosting;
 
 namespace AspNetCoreMvcApp
 {
